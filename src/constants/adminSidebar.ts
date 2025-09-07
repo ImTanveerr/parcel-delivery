@@ -6,7 +6,7 @@ import { lazy } from "react";
 
 export const Analytics = lazy(() => import("@/app/dashboard/admin/analytics/page"));
 export const Users = lazy(() => import("@/app/dashboard/admin/users/page"));
-export const Parcels = lazy(() => import("@/app/dashboard/admin/parcels/page"));
+export const Parcels = lazy(() => import("@/app/dashboard/admin/AdminParcel"));
 
 export const AdminSidebarItems: ISidebarItem[] = [
   {
