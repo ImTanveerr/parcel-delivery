@@ -5,7 +5,7 @@ import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react
 import { DayPicker, DayPickerProps } from "react-day-picker";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/src/lib/utils";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Custom Day Button
 function CalendarDayButton({ day, selected, ...props }: any) {
   return (
