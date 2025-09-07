@@ -1,7 +1,7 @@
 // components/admin/AdminSidebar.tsx
 "use client";
 
-import { adminSidebarItems } from "@/pages/admin/adminSidebar";
+import { AdminSidebarItems } from "@/pages/admin/adminSidebar";
 import Link from "next/link";
 import React from "react";
 
@@ -13,7 +13,7 @@ export default function AdminSidebar({ onLinkClick }: AdminSidebarProps) {
   return (
     <aside className="w-64 h-screen sticky top-0 border-r p-4 bg-white overflow-y-auto">
       <h2 className="text-xl font-bold mb-6 text-gray-900">Admin Panel</h2>
-      {adminSidebarItems.map((section) => (
+      {AdminSidebarItems.map((section) => (
         <div key={section.title} className="mb-6">
           <h3 className="text-gray-700 font-semibold mb-2">{section.title}</h3>
           <ul className="space-y-2">
