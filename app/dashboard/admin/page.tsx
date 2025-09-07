@@ -2,7 +2,7 @@
 "use client";
 
 import {  withSkeleton } from "@/src/utils/LazyImports";
-import {  Analytics } from "@/pages/admin/adminSidebar";
+import {  Analytics } from "@/src/constants/adminSidebar";
 
 const AnalyticsWithSkeleton = withSkeleton(Analytics);
 

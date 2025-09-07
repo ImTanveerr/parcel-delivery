@@ -1,7 +1,7 @@
 // components/admin/AdminSidebar.tsx
 "use client";
 
-import { AdminSidebarItems } from "@/pages/admin/adminSidebar";
+import { AdminSidebarItems } from "@/src/constants/adminSidebar";
 import Link from "next/link";
 import React from "react";
 
