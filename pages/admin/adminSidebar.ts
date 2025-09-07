@@ -1,7 +1,7 @@
 // pages/Admin/adminSidebar.ts
 
 import { ISidebarItem } from "@/src/types";
-import {  withSkeleton } from "../LazyImports";
+import {  withSkeleton } from "../../src/utils/LazyImports";
 import { lazy } from "react";
 
 export const Analytics = lazy(() => import("@/app/dashboard/admin/analytics/page"));
