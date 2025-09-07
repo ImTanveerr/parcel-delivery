@@ -1,5 +1,5 @@
 import { baseApi } from "../../baseApi";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

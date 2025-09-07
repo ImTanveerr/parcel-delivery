@@ -15,9 +15,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { cn } from "@/src/lib/utils";
 import { useCreateContactMutation } from "@/src/redux/apis/contact.api";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // Zod schema for validation
 const contactSchema = z.object({

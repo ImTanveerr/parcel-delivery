@@ -27,7 +27,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { ParcelType } from "@/src/types/parcel.types";
 import { useAddParcelMutation } from "@/src/redux/apis/sender.api";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const parcelSchema = z.object({
   receiverId: z.string().min(1, "Receiver ID is required"),

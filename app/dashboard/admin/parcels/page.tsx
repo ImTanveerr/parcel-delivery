@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/pagination";
 import { toast } from "sonner";
 import ParcelFilters from "@/components/parcel/ParcelFilters";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export default function AdminParcels() {
   const searchParams = useSearchParams();

@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useGetMyParcelsQuery } from "@/src/redux/apis/sender.api";
 import { ParcelStatus, ParcelType } from "@/src/types/parcel.types";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 

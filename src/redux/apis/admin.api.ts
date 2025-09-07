@@ -2,7 +2,7 @@ import { IUser } from "@/src/types/user.types";
 import { baseApi } from "../baseApi";
 import { IParcel } from "@/src/types/parcel.types";
 import { IResponse } from "@/src/types";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const adminApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

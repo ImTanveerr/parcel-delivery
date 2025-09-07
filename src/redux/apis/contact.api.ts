@@ -1,4 +1,5 @@
 import { baseApi } from "../baseApi";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const contactApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

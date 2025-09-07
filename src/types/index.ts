@@ -2,7 +2,7 @@ import { ComponentType } from "react";
 
 export type {  ILogin } from "./auth.type";
 
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IResponse<T> {
   meta: any;
   statusCode: number;

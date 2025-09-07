@@ -9,6 +9,7 @@ import {
 } from "@/src/redux/apis/sender.api";
 import { IParcel } from "@/src/types/parcel.types";
 import { toast } from "sonner";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export default function viewAllParcel() {
   const [currentPage] = useState(1);

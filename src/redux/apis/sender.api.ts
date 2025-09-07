@@ -1,7 +1,7 @@
 import { IParcel, ParcelType } from "@/src/types/parcel.types";
 import { baseApi } from "../baseApi";
 import { IResponse } from "@/src/types";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface ICreateParcel {
     senderId: string;

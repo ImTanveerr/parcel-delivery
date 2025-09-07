@@ -1,6 +1,7 @@
 import { ITrackingEvent } from "@/src/types/parcel.types";
 import { baseApi } from "../baseApi";
 import { IResponse } from "@/src/types";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const trackApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

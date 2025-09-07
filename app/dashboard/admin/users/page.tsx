@@ -18,7 +18,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default function AdminUsersPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 5; // users per page

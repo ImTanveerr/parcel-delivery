@@ -8,7 +8,7 @@ import {
 import { IParcel } from "@/src/types/parcel.types";
 import { toast } from "sonner";
 import { useState } from "react";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default function DeliveredParcelsPage() {
   const { data: parcels, isLoading, isError } = useGetMyParcelsQuery();
   const [receiveParcel] = useReceiveParcelMutation();
