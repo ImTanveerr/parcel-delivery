@@ -1,9 +1,12 @@
+// src/components/LazyImports.tsx
 "use client";
 
 import { lazy, ComponentType, Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// T must extend React props
+/**
+ * Higher-Order Component to wrap lazy-loaded components with a skeleton fallback
+ */
 export function withSkeleton<T extends object>(Component: ComponentType<T>) {
   const WrappedComponent = (props: T) => (
     <Suspense fallback={<Skeleton className="h-96 w-full" />}>
@@ -11,13 +14,15 @@ export function withSkeleton<T extends object>(Component: ComponentType<T>) {
     </Suspense>
   );
 
-  // Add a display name for React DevTools and ESLint
+  // Add display name for React DevTools and ESLint
   WrappedComponent.displayName = `withSkeleton(${Component.displayName || Component.name || "Component"})`;
 
   return WrappedComponent;
 }
 
-// Lazy imports
+/**
+ * Lazy-loaded admin dashboard pages
+ */
 export const Analytics = lazy(() =>
   import("@/app/dashboard/admin/analytics/page")
 );
