@@ -1,6 +1,6 @@
 "use client";
 
-import {  ComponentType, Suspense } from "react";
+import { lazy, ComponentType, Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 // T must extend React props
@@ -11,4 +11,5 @@ export function withSkeleton<T extends {}>(Component: ComponentType<T>) {
     </Suspense>
   );
 }
+
 

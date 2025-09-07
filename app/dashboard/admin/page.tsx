@@ -1,7 +1,8 @@
 // app/dashboard/admin/page.tsx (Analytics)
 "use client";
 
-import { Analytics, withSkeleton } from "@/pages/LazyImports";
+import {  withSkeleton } from "@/pages/LazyImports";
+import {  Analytics } from "@/pages/admin/adminSidebar";
 
 const AnalyticsWithSkeleton = withSkeleton(Analytics);
 
