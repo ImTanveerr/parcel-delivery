@@ -49,7 +49,8 @@ export default function TestimonialsSection() {
                   className="rounded-full"
                 />
               </div>
-              <p className="text-gray-700 mb-4">"{t.message}"</p>
+              {/* Escaped quotes to fix ESLint error */}
+              <p className="text-gray-700 mb-4">{`"${t.message}"`}</p>
               <h3 className="text-gray-900 font-semibold">{t.name}</h3>
               <p className="text-gray-500 text-sm">{t.role}</p>
             </div>
