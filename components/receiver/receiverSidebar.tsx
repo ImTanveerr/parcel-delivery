@@ -1,7 +1,7 @@
 // components/receiver/ReceiverSidebar.tsx
 "use client";
 
-import { receiverSidebarItems } from "@/pages/receiver/receiverSidebar";
+import { receiverSidebarItems } from "@/src/constants/receiverSidebar";
 import Link from "next/link";
 import React from "react";
 

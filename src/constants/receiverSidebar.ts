@@ -2,7 +2,7 @@
 
 import { ISidebarItem } from "@/src/types";
 import { lazy } from "react";
-import {  withSkeleton } from "../../src/utils/LazyImports";
+import {  withSkeleton } from "../utils/LazyImports";
  const Dashboard = lazy(() => import("@/app/dashboard/receiver/page"));
  const viewParcel = lazy(() => import("@/app/dashboard/receiver/viewParcels/page"));
  const createParcel = lazy(() => import("@/app/dashboard/receiver/DeliveredParcels/page"));

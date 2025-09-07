@@ -1,7 +1,7 @@
 // components/sender/SenderSidebar.tsx
 "use client";
 
-import { senderSidebarItems } from "@/pages/sender/senderSidebar";
+import { senderSidebarItems } from "@/src/constants/senderSidebar";
 import Link from "next/link";
 import React from "react";
 
