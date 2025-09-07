@@ -1,7 +1,17 @@
 // pages/Admin/adminSidebar.ts
 
 import { ISidebarItem } from "@/src/types";
-import { Analytics, Users, Parcels, withSkeleton } from "../LazyImports";
+import {  withSkeleton } from "../LazyImports";
+import { lazy } from "react";
+ const Analytics = lazy(() =>
+  import("@/app/dashboard/admin/analytics/page")
+);
+ const Users = lazy(() =>
+  import("@/app/dashboard/admin/users/page")
+);
+ const Parcels = lazy(() =>
+  import("@/app/dashboard/admin/parcels/page")
+);
 
 export const adminSidebarItems: ISidebarItem[] = [
   {
