@@ -24,13 +24,13 @@ export default function HomePage() {
       <OfferSection />
 
 
-      <WhyChooseUsSection />
 
-      <HowItWorksSection />
       <PartnersSection />
       <TestimonialsSection />
       <BlogSection />
+      <WhyChooseUsSection />
 
+      <HowItWorksSection />
       <CTASection />
       <CoverageSection />
       <NewsletterSection />
