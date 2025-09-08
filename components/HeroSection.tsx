@@ -24,13 +24,13 @@ export default function HeroSection() {
           className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${index === current ? "opacity-100" : "opacity-0"
             }`}
         >
-          <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+          <img src={slide.image} alt={slide.title} className="w-full h-auto object-contain"/>
           <div className="absolute bottom-20 left-10 text-black">
             <h2 className="text-5xl font-bold">{slide.title}</h2>
             <p className="text-xl mt-2">{slide.subtitle}</p>
 
             <Link href="/tracking">
-              <button className="mt-4 bg-white text-red-600 px-6 py-2 rounded font-semibold hover:bg-gray-100 transition">
+              <button className="mt-4 bg-white text-red-600 px-6 py-2 rounded font-semibold hover:bg-orange-100 transition">
                 Track Parcel
               </button>
             </Link>
