@@ -24,7 +24,7 @@ export default function BlogSection() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12">Latest News</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-12">Latest Blogs</h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.map((blog, idx) => (
