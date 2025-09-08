@@ -25,7 +25,7 @@ export default function HeroSection() {
             }`}
         >
           <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
-          <div className="absolute bottom-20 left-10 text-white">
+          <div className="absolute bottom-20 left-10 text-black">
             <h2 className="text-5xl font-bold">{slide.title}</h2>
             <p className="text-xl mt-2">{slide.subtitle}</p>
 

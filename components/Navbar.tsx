@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/popover";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import {
   authApi,
@@ -56,6 +56,8 @@ export default function Navbar() {
     dispatch(authApi.util.resetApiState());
     toast.success("Logged out successfully");
   };
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Adjust depending on API shape
   const user = data?.data ?? data;
@@ -186,24 +188,102 @@ export default function Navbar() {
 
 
         {/* Mobile Menu */}
-        <div className="md:hidden">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="ghost">☰</Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-56 p-2 bg-white text-black">
-              <NavigationMenu className="flex flex-col gap-2">
-                {navigationLinks.map((link) => (
-                  <NavigationMenuItem key={link.href}>
-                    <NavigationMenuLink asChild>
-                      <Link href={link.href}>{link.label}</Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenu>
-            </PopoverContent>
-          </Popover>
+       <div className="md:hidden">
+  <Popover open={menuOpen} onOpenChange={setMenuOpen}>
+    <PopoverTrigger asChild>
+      <Button
+        variant="ghost"
+        className="text-white text-xl focus:outline-none"
+      >
+        ☰
+      </Button>
+    </PopoverTrigger>
+    <PopoverContent
+      className="w-48 p-3 bg-white text-black rounded-md shadow-lg"
+      align="end"
+    >
+      <nav className="flex flex-col gap-2">
+        {navigationLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            onClick={() => setMenuOpen(false)} // ✅ close menu after click
+            className="px-3 py-2 rounded-md hover:bg-gray-100"
+          >
+            {link.label}
+          </Link>
+        ))}
+
+        {/* Services Section */}
+        <div className="border-t pt-2 mt-2">
+          <p className="text-sm font-semibold text-gray-600">Services</p>
+          <div className="flex flex-col gap-1 mt-1">
+            <Link
+              href="/send-parcel"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-red-600"
+            >
+              Send a Parcel
+            </Link>
+            <Link
+              href="/pricing"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-red-600"
+            >
+              Pricing Plans
+            </Link>
+            <Link
+              href="/corporate"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-red-600"
+            >
+              Corporate Solutions
+            </Link>
+            <Link
+              href="/support"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-red-600"
+            >
+              Customer Support
+            </Link>
+          </div>
         </div>
+
+        {/* Auth Buttons */}
+        <div className="border-t pt-2 mt-2 flex flex-col gap-2">
+          {isLoggedIn ? (
+            <Button
+              onClick={() => {
+                handleLogout();
+                setMenuOpen(false);
+              }}
+              className="bg-red-600 text-white hover:bg-red-700"
+            >
+              Logout
+            </Button>
+          ) : (
+            <>
+              <Button
+                asChild
+                className="bg-orange-600 text-white hover:bg-orange-700"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button
+                asChild
+                className="bg-gray-900 text-white hover:bg-gray-800"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Link href="/register">Register</Link>
+              </Button>
+            </>
+          )}
+        </div>
+      </nav>
+    </PopoverContent>
+  </Popover>
+</div>
       </div>
     </header>
   );

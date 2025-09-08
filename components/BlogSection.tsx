@@ -17,7 +17,7 @@ export default function BlogSection() {
     {
       title: "Corporate Shipping Solutions",
       description: "Discover our solutions for businesses that send parcels daily.",
-      image: "/images/blog3.jpg",
+      image: "/images/blog3.png",
     },
   ];
 

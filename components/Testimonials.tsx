@@ -9,21 +9,21 @@ export default function TestimonialsSection() {
       role: "Business Owner",
       message:
         "Bondhu Currier has made sending parcels effortless. Fast and reliable service every time!",
-      image: "/images/testimonial1.jpg",
+      image: "/images/testimonial1.png",
     },
     {
       name: "Rafiq Ahmed",
       role: "Individual Customer",
       message:
         "I always track my parcels easily and they arrive on time. Excellent support team too.",
-      image: "/images/testimonial2.jpg",
+      image: "/images/testimonial2.png",
     },
     {
       name: "Nusrat Jahan",
       role: "E-commerce Seller",
       message:
         "Their corporate solutions helped me streamline deliveries for my online shop. Highly recommended!",
-      image: "/images/testimonial3.jpg",
+      image: "/images/testimonial3.png",
     },
   ];
 
