@@ -51,125 +51,148 @@ export default function AdminUsersPage() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6 text-gray-900">All Users ({total})</h1>
+  <div className="p-6 bg-background text-foreground transition-colors duration-300">
+    <h1 className="text-2xl font-bold mb-6">{`All Users (${total})`}</h1>
 
-      {/* Large screen table */}
-      <div className="hidden md:block overflow-x-auto">
-        <table className="table-auto w-full border-collapse border border-gray-200">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="border px-4 py-2 text-left text-gray-700">Name</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Email</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Phone</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Role</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Status</th>
-              <th className="border px-4 py-2 text-left text-gray-700">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.data.map((user: IUser) => (
-              <tr
-                key={user._id}
-                className="hover:bg-gray-100 transition-colors"
+    {/* Large screen table */}
+    <div className="hidden md:block overflow-x-auto">
+      <table className="table-auto w-full border-collapse border border-border">
+        <thead className="bg-card">
+          <tr>
+            {["Name", "Email", "Phone", "Role", "Status", "Actions"].map((col) => (
+              <th
+                key={col}
+                className="border px-4 py-2 text-left text-card-foreground"
               >
-                <td className="border px-4 py-2 text-gray-900">{user.name}</td>
-                <td className="border px-4 py-2 text-gray-900">{user.email}</td>
-                <td className="border px-4 py-2 text-gray-900">{user.phone || "-"}</td>
-                <td className="border px-4 py-2 text-gray-900">{user.role}</td>
-                <td className="border px-4 py-2 text-gray-900">{user.Status}</td>
-                <td className="border px-4 py-2 flex flex-wrap gap-2">
-                  {user.Status === UserStatus.ACTIVE ? (
-                    <button
-                      onClick={() => handleAction("block", user._id!)}
-                      className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
-                    >
-                      Block
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleAction("unblock", user._id!)}
-                      className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition"
-                    >
-                      Unblock
-                    </button>
-                  )}
-                  <button
-                    onClick={() => handleAction("delete", user._id!)}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
+                {col}
+              </th>
             ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Small screen cards */}
-      <div className="md:hidden flex flex-col gap-4">
-        {data.data.map((user: IUser) => (
-          <div key={user._id} className="border border-gray-200 p-4 rounded shadow-sm bg-white">
-            <div className="flex justify-between mb-1"><span className="font-semibold">Name:</span><span>{user.name}</span></div>
-            <div className="flex justify-between mb-1"><span className="font-semibold">Email:</span><span>{user.email}</span></div>
-            <div className="flex justify-between mb-1"><span className="font-semibold">Phone:</span><span>{user.phone || "-"}</span></div>
-            <div className="flex justify-between mb-1"><span className="font-semibold">Role:</span><span>{user.role}</span></div>
-            <div className="flex justify-between mb-2"><span className="font-semibold">Status:</span><span>{user.Status}</span></div>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {user.Status === UserStatus.ACTIVE ? (
-                <button onClick={() => handleAction("block", user._id!)} className="flex-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">
-                  Block
+          </tr>
+        </thead>
+        <tbody>
+          {data.data.map((user: IUser) => (
+            <tr key={user._id} className="hover:bg-hover transition-colors">
+              <td className="border px-4 py-2">{user.name}</td>
+              <td className="border px-4 py-2">{user.email}</td>
+              <td className="border px-4 py-2">{user.phone || "-"}</td>
+              <td className="border px-4 py-2">{user.role}</td>
+              <td className="border px-4 py-2">{user.Status}</td>
+              <td className="border px-4 py-2 flex flex-wrap gap-2">
+                {user.Status === UserStatus.ACTIVE ? (
+                  <button
+                    onClick={() => handleAction("block", user._id!)}
+                    className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+                  >
+                    Block
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleAction("unblock", user._id!)}
+                    className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition"
+                  >
+                    Unblock
+                  </button>
+                )}
+                <button
+                  onClick={() => handleAction("delete", user._id!)}
+                  className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                >
+                  Delete
                 </button>
-              ) : (
-                <button onClick={() => handleAction("unblock", user._id!)} className="flex-1 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition">
-                  Unblock
-                </button>
-              )}
-              <button onClick={() => handleAction("delete", user._id!)} className="flex-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition">
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Pagination */}
-      {totalPage > 1 && (
-        <div className="w-full bottom-0 left-0 p-4 flex flex-col items-center mt-6">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious
-                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                  className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
-                />
-              </PaginationItem>
-
-              {Array.from({ length: totalPage }, (_, i) => i + 1).map(page => (
-                <PaginationItem key={page} onClick={() => setCurrentPage(page)}>
-                  <PaginationLink isActive={currentPage === page}>{page}</PaginationLink>
-                </PaginationItem>
-              ))}
-
-              <PaginationItem>
-                <PaginationNext
-                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPage))}
-                  className={currentPage === totalPage ? "pointer-events-none opacity-50" : "cursor-pointer"}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-          <p className="text-sm mt-2 text-gray-700">
-            Showing {start}-{end} of {total}
-          </p>
-        </div>
-      )}
-
-
-
-      
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  );
+
+    {/* Small screen cards */}
+    <div className="md:hidden flex flex-col gap-4">
+      {data.data.map((user: IUser) => (
+        <div
+          key={user._id}
+          className="border border-border p-4 rounded shadow-sm bg-card transition-colors"
+        >
+          <div className="flex justify-between mb-1">
+            <span className="font-semibold">Name:</span>
+            <span>{user.name}</span>
+          </div>
+          <div className="flex justify-between mb-1">
+            <span className="font-semibold">Email:</span>
+            <span>{user.email}</span>
+          </div>
+          <div className="flex justify-between mb-1">
+            <span className="font-semibold">Phone:</span>
+            <span>{user.phone || "-"}</span>
+          </div>
+          <div className="flex justify-between mb-1">
+            <span className="font-semibold">Role:</span>
+            <span>{user.role}</span>
+          </div>
+          <div className="flex justify-between mb-2">
+            <span className="font-semibold">Status:</span>
+            <span>{user.Status}</span>
+          </div>
+          <div className="flex flex-wrap gap-2 mt-2">
+            {user.Status === UserStatus.ACTIVE ? (
+              <button
+                onClick={() => handleAction("block", user._id!)}
+                className="flex-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+              >
+                Block
+              </button>
+            ) : (
+              <button
+                onClick={() => handleAction("unblock", user._id!)}
+                className="flex-1 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition"
+              >
+                Unblock
+              </button>
+            )}
+            <button
+              onClick={() => handleAction("delete", user._id!)}
+              className="flex-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Pagination */}
+    {totalPage > 1 && (
+      <div className="w-full bottom-0 left-0 p-4 flex flex-col items-center mt-6">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+              />
+            </PaginationItem>
+
+            {Array.from({ length: totalPage }, (_, i) => i + 1).map((page) => (
+              <PaginationItem key={page} onClick={() => setCurrentPage(page)}>
+                <PaginationLink isActive={currentPage === page}>{page}</PaginationLink>
+              </PaginationItem>
+            ))}
+
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPage))}
+                className={currentPage === totalPage ? "pointer-events-none opacity-50" : "cursor-pointer"}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+        <p className="text-sm mt-2 text-foreground">
+          Showing {start}-{end} of {total}
+        </p>
+      </div>
+    )}
+  </div>
+);
+
 }
 

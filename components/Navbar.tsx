@@ -24,6 +24,7 @@ import {
 import { useAppDispatch } from "@/src/redux/hook";
 import Logo from "@/app/assets/icons/Logo";
 import { role } from "@/app/constants/role";
+import { ModeToggle } from "./layout/ModeToggle";
 
 // Public links
 const publicLinks = [
@@ -158,6 +159,7 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
+          <ModeToggle/>
           {isLoggedIn ? (
             <Button
               onClick={handleLogout}

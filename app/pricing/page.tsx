@@ -23,59 +23,75 @@ const locationPricing = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12 text-gray-900">
-          Our Pricing
-        </h1>
+  <div className="min-h-screen bg-background py-16 px-4 transition-colors duration-300">
+    <div className="max-w-6xl mx-auto">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 text-muted-foreground">
+        Our Pricing
+      </h1>
 
-        {/* Delivery Type Pricing */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Delivery Type Pricing</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {deliveryPricing.map((item, idx) => (
-              <Card key={idx} className="p-6 bg-white shadow-md hover:shadow-lg transition">
-                <CardContent>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.type}</h3>
-                  <p className="text-orange-600 font-bold mb-2">{item.price}</p>
-                  <p className="text-gray-700 text-sm">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+      {/* Delivery Type Pricing */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">
+          Delivery Type Pricing
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {deliveryPricing.map((item, idx) => (
+            <Card
+              key={idx}
+              className="p-6 bg-card text-card-foreground border border-border shadow-md hover:shadow-lg transition-colors duration-300"
+            >
+              <CardContent>
+                <h3 className="text-xl font-semibold mb-2">{item.type}</h3>
+                <p className="text-orange-500 font-bold mb-2">{item.price}</p>
+                <p className="text-sm text-muted-foreground/80">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-        {/* Vehicle Type Pricing */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Vehicle Type Pricing</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {vehiclePricing.map((item, idx) => (
-              <Card key={idx} className="p-6 bg-white shadow-md hover:shadow-lg transition">
-                <CardContent>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.type}</h3>
-                  <p className="text-orange-600 font-bold mb-2">{item.price}</p>
-                  <p className="text-gray-700 text-sm">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+      {/* Vehicle Type Pricing */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">
+          Vehicle Type Pricing
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {vehiclePricing.map((item, idx) => (
+            <Card
+              key={idx}
+              className="p-6 bg-card text-card-foreground border border-border shadow-md hover:shadow-lg transition-colors duration-300"
+            >
+              <CardContent>
+                <h3 className="text-xl font-semibold mb-2">{item.type}</h3>
+                <p className="text-orange-500 font-bold mb-2">{item.price}</p>
+                <p className="text-sm text-muted-foreground/80">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-        {/* Location-based Pricing */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Location-Based Pricing</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {locationPricing.map((item, idx) => (
-              <Card key={idx} className="p-6 bg-white shadow-md hover:shadow-lg transition">
-                <CardContent>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.location}</h3>
-                  <p className="text-orange-600 font-bold">{item.price}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-      </div>
+      {/* Location-Based Pricing */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">
+          Location-Based Pricing
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {locationPricing.map((item, idx) => (
+            <Card
+              key={idx}
+              className="p-6 bg-card text-card-foreground border border-border shadow-md hover:shadow-lg transition-colors duration-300"
+            >
+              <CardContent>
+                <h3 className="text-xl font-semibold mb-2">{item.location}</h3>
+                <p className="text-orange-500 font-bold">{item.price}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
     </div>
-  );
+  </div>
+);
+
 }

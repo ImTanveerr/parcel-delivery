@@ -1,4 +1,3 @@
-// app/faq/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -47,8 +46,6 @@ const faqs: FAQItem[] = [
   }
 ];
 
-
-
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -57,29 +54,30 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">
+    <div className="max-w-3xl mx-auto p-6 transition-colors duration-300">
+      <h1 className="text-3xl md:text-5xl text-muted-foreground max-w-3xl mx-auto text-center font-bold mb-10">
         Frequently Asked Questions
       </h1>
+
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-lg shadow-sm"
+            className="border border-border rounded-xl shadow-sm bg-card text-card-foreground transition-colors duration-300"
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-50 transition"
+              className="w-full flex justify-between items-center p-5 text-left font-medium hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300 rounded-t-xl"
             >
               {faq.question}
               <ChevronDown
-                className={`h-5 w-5 transition-transform ${
+                className={`h-5 w-5 text-primary transition-transform duration-300 ${
                   openIndex === index ? "rotate-180" : ""
                 }`}
               />
             </button>
             {openIndex === index && (
-              <div className="p-4 border-t border-gray-200 text-gray-700">
+              <div className="p-5 border-t border-border text-muted-foreground transition-colors duration-300">
                 {faq.answer}
               </div>
             )}
@@ -89,4 +87,3 @@ export default function FAQPage() {
     </div>
   );
 }
-

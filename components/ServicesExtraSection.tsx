@@ -29,25 +29,28 @@ export default function ServicesExtraSection() {
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12">
-          Additional Services
-        </h2>
+  <section className="py-16 bg-background text-center transition-colors duration-300">
+    <div className="container mx-auto px-4">
+      <h2 className="text-3xl font-bold text-muted-foreground mb-12">
+        Additional Services
+      </h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, idx) => (
-            <div
-              key={idx}
-              className="p-6 border rounded-xl hover:shadow-lg transition text-gray-800"
-            >
-              <div className="flex justify-center mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
-            </div>
-          ))}
-        </div>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service, idx) => (
+          <div
+            key={idx}
+            className="p-6 border border-border rounded-xl hover:shadow-lg transition bg-card text-card-foreground"
+          >
+            <div className="flex justify-center mb-4">{service.icon}</div>
+            <h3 className="text-xl font-semibold mb-2 text-muted-foreground">
+              {service.title}
+            </h3>
+            <p className="text-muted-foreground">{service.description}</p>
+          </div>
+        ))}
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
+
 }

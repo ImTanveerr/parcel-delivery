@@ -27,36 +27,37 @@ export default function TestimonialsSection() {
     },
   ];
 
-  return (
-    <section className="bg-gray-50 py-16">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12">
-          What Our Clients Say
-        </h2>
+ return (
+  <section className="bg-background py-16 transition-colors duration-300">
+    <div className="container mx-auto px-4 text-center">
+      <h2 className="text-3xl font-bold text-muted-foreground mb-12">
+        What Our Clients Say
+      </h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-            >
-              <div className="flex items-center justify-center mb-4">
-                <Image
-                  src={t.image}
-                  alt={t.name}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
-              </div>
-              {/* Escaped quotes to fix ESLint error */}
-              <p className="text-gray-700 mb-4">{`"${t.message}"`}</p>
-              <h3 className="text-gray-900 font-semibold">{t.name}</h3>
-              <p className="text-gray-500 text-sm">{t.role}</p>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {testimonials.map((t, idx) => (
+          <div
+            key={idx}
+            className="bg-card p-6 rounded-xl shadow hover:shadow-lg transition-colors duration-300 text-card-foreground"
+          >
+            <div className="flex items-center justify-center mb-4">
+              <Image
+                src={t.image}
+                alt={t.name}
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
             </div>
-          ))}
-        </div>
+            {/* Escaped quotes to fix ESLint error */}
+            <p className="text-muted-foreground mb-4">{`"${t.message}"`}</p>
+            <h3 className="text-muted-foreground font-semibold">{t.name}</h3>
+            <p className="text-muted-foreground text-sm">{t.role}</p>
+          </div>
+        ))}
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
+
 }

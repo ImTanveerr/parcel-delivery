@@ -89,84 +89,112 @@ const filters = {
   };
 
   return (
-   <div className="text-black bg-gray-50">
-  {/* Filters */}
-  <ParcelFilters />
+  <div className="text-foreground bg-background transition-colors duration-300">
+    {/* Filters */}
+    <ParcelFilters />
 
-  {/* Parcel list */}
-  <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-    {isLoading && <p>Loading parcels…</p>}
-    {isError && <p>Error fetching parcels</p>}
-    {!isLoading && !isError && parcels.length === 0 && <p>No parcels found</p>}
+    {/* Parcel list */}
+    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {isLoading && <p>Loading parcels…</p>}
+      {isError && <p>Error fetching parcels</p>}
+      {!isLoading && !isError && parcels.length === 0 && <p>No parcels found</p>}
 
-    {parcels.map((parcel: IParcel) => (
-      <div
-        key={parcel._id}
-        className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition p-5 flex flex-col justify-between text-black"
-      >
-        <div className="space-y-2">
-          <h3 className="text-lg font-semibold">{parcel.trackingId || "N/A"}</h3>
-          <p>
-            <span className="font-medium">Type:</span> {parcel.parcelType}
-          </p>
-          <p>
-            <span className="font-medium">Status:</span>{" "}
-            <span className={`px-2 py-0.5 rounded-full text-sm font-medium ${
-              parcel.status === "APPROVED"
-                ? "bg-green-100 text-green-800"
-                : parcel.status === "CANCELLED"
-                ? "bg-red-100 text-red-800"
-                : parcel.status === "DELIVERED"
-                ? "bg-blue-100 text-blue-800"
-                : "bg-yellow-100 text-yellow-800"
-            }`}>
-              {parcel.status}
-            </span>
-          </p>
-          <p><span className="font-medium">Pickup:</span> {parcel.pickupAddress}</p>
-          <p><span className="font-medium">Delivery:</span> {parcel.deliveryAddress}</p>
-          <p><span className="font-medium">Sender:</span> {parcel.senderId}</p>
-          <p><span className="font-medium">Receiver:</span> {parcel.receiverId}</p>
+      {parcels.map((parcel: IParcel) => (
+        <div
+          key={parcel._id}
+          className="bg-card border border-border rounded-lg shadow hover:shadow-lg transition p-5 flex flex-col justify-between"
+        >
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-card-foreground">{parcel.trackingId || "N/A"}</h3>
+            <p>
+              <span className="font-medium">Type:</span> {parcel.parcelType}
+            </p>
+            <p>
+              <span className="font-medium">Status:</span>{" "}
+              <span
+                className={`px-2 py-0.5 rounded-full text-sm font-medium ${
+                  parcel.status === "APPROVED"
+                    ? "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100"
+                    : parcel.status === "CANCELLED"
+                    ? "bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100"
+                    : parcel.status === "DELIVERED"
+                    ? "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100"
+                    : "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100"
+                }`}
+              >
+                {parcel.status}
+              </span>
+            </p>
+            <p><span className="font-medium">Pickup:</span> {parcel.pickupAddress}</p>
+            <p><span className="font-medium">Delivery:</span> {parcel.deliveryAddress}</p>
+            <p><span className="font-medium">Sender:</span> {parcel.senderId}</p>
+            <p><span className="font-medium">Receiver:</span> {parcel.receiverId}</p>
+          </div>
+
+          {/* Buttons */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            {parcel.status !== "APPROVED" && parcel.status !== "DELIVERED" && (
+              <button
+                className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                onClick={() => handleApprove(parcel._id)}
+              >
+                Approve
+              </button>
+            )}
+            {parcel.status !== "CANCELLED" && parcel.status !== "DELIVERED" && (
+              <button
+                className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                onClick={() => handleCancel(parcel._id)}
+              >
+                Cancel
+              </button>
+            )}
+            {parcel.status === "APPROVED" && (
+              <button
+                className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                onClick={() => handleDeliver(parcel._id)}
+              >
+                Deliver
+              </button>
+            )}
+            <button
+              className="px-3 py-1 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
+              onClick={() => handleDelete(parcel._id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
-
-        {/* Buttons */}
-        <div className="mt-4 flex flex-wrap gap-2">
-          {parcel.status !== "APPROVED" && parcel.status !== "DELIVERED" && (
-            <button className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition" onClick={() => handleApprove(parcel._id)}>Approve</button>
-          )}
-          {parcel.status !== "CANCELLED" && parcel.status !== "DELIVERED" && (
-            <button className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition" onClick={() => handleCancel(parcel._id)}>Cancel</button>
-          )}
-          {parcel.status === "APPROVED" && (
-            <button className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition" onClick={() => handleDeliver(parcel._id)}>Deliver</button>
-          )}
-          <button className="px-3 py-1 bg-gray-600 text-white rounded hover:bg-gray-700 transition" onClick={() => handleDelete(parcel._id)}>Delete</button>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  {/* Pagination */}
-  {totalPage > 1 && (
-    <div className="w-full bottom-0 left-0 p-4 flex justify-center bg-transparent">
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"} />
-          </PaginationItem>
-          {Array.from({ length: totalPage }, (_, index) => index + 1).map((page) => (
-            <PaginationItem key={page} onClick={() => setCurrentPage(page)}>
-              <PaginationLink isActive={currentPage === page}>{page}</PaginationLink>
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPage))} className={currentPage === totalPage ? "pointer-events-none opacity-50" : "cursor-pointer"} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      ))}
     </div>
-  )}
-</div>
 
-  );
+    {/* Pagination */}
+    {totalPage > 1 && (
+      <div className="w-full bottom-0 left-0 p-4 flex justify-center bg-transparent">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+              />
+            </PaginationItem>
+            {Array.from({ length: totalPage }, (_, index) => index + 1).map((page) => (
+              <PaginationItem key={page} onClick={() => setCurrentPage(page)}>
+                <PaginationLink isActive={currentPage === page}>{page}</PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPage))}
+                className={currentPage === totalPage ? "pointer-events-none opacity-50" : "cursor-pointer"}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+    )}
+  </div>
+);
+
 }

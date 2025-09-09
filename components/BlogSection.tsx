@@ -21,26 +21,33 @@ export default function BlogSection() {
     },
   ];
 
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12">Latest Blogs</h2>
+ return (
+  <section className="py-16 bg-background transition-colors duration-300">
+    <div className="container mx-auto px-4 text-center">
+      <h2 className="text-3xl font-bold text-card-foreground mb-12 transition-colors duration-300">
+        Latest Blogs
+      </h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog, idx) => (
-            <div
-              key={idx}
-              className="rounded-xl overflow-hidden shadow hover:shadow-lg transition"
-            >
-              <Image src={blog.image} alt={blog.title} width={400} height={250} />
-              <div className="p-6 text-left">
-                <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
-                <p className="text-gray-600">{blog.description}</p>
-              </div>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {blogs.map((blog, idx) => (
+          <div
+            key={idx}
+            className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-colors duration-300 bg-card text-card-foreground"
+          >
+            <Image src={blog.image} alt={blog.title} width={400} height={250} />
+            <div className="p-6 text-left">
+              <h3 className="text-xl font-semibold mb-2 text-card-foreground transition-colors duration-300">
+                {blog.title}
+              </h3>
+              <p className="text-muted-foreground transition-colors duration-300">
+                {blog.description}
+              </p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
+
 }

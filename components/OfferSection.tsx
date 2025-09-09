@@ -17,22 +17,25 @@ export default function OfferSection() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12">Our Offers</h2>
+  <section className="py-16 bg-background text-center transition-colors duration-300">
+    <div className="container mx-auto px-4">
+      <h2 className="text-3xl font-bold mb-12 text-muted-foreground">
+        Our Offers
+      </h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {offers.map((offer, idx) => (
-            <div
-              key={idx}
-              className="p-6 border rounded-xl hover:shadow-lg transition text-gray-800"
-            >
-              <h3 className="text-xl font-semibold mb-2">{offer.title}</h3>
-              <p className="text-gray-600">{offer.description}</p>
-            </div>
-          ))}
-        </div>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {offers.map((offer, idx) => (
+          <div
+            key={idx}
+            className="p-6 border border-border rounded-xl hover:shadow-lg transition bg-card text-card-foreground"
+          >
+            <h3 className="text-xl font-semibold mb-2">{offer.title}</h3>
+            <p className="text-muted-foreground">{offer.description}</p>
+          </div>
+        ))}
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
+
 }

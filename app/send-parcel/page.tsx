@@ -43,33 +43,44 @@ export default function SendParcelPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16 px-4">
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">How to Send a Parcel</h1>
-        <p className="text-gray-700 text-lg">
-          BondhuCurrier makes sending parcels fast, easy, and secure. Follow these simple steps to ensure your parcel reaches safely.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {steps.map((step, idx) => (
-          <div key={idx} className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition">
-            <div className="mb-4">{step.icon}</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-            <p className="text-gray-700 text-sm">{step.description}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-16 text-center max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Delivery Options</h2>
-        <p className="text-gray-700 mb-6">
-          Choose the delivery option that fits your needs: standard delivery (2-5 days), express delivery (1-2 days), or same-day delivery (where available).
-        </p>
-        <p className="text-gray-700">
-          Each parcel is assigned a unique Tracking ID so you can monitor it from pickup to delivery. Our customer support team is always available to assist with any queries.
-        </p>
-      </div>
+  <div className="min-h-screen bg-background py-16 px-4 transition-colors duration-300">
+    {/* Hero / Title */}
+    <div className="max-w-4xl mx-auto text-center mb-12">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-muted-foreground">
+        How to Send a Parcel
+      </h1>
+      <p className="text-lg text-muted-foreground/80">
+        BondhuCurrier makes sending parcels fast, easy, and secure. Follow these simple steps to ensure your parcel reaches safely.
+      </p>
     </div>
-  );
+
+    {/* Steps Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {steps.map((step, idx) => (
+        <div
+          key={idx}
+          className="bg-card text-card-foreground border border-border rounded-2xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-colors duration-300"
+        >
+          <div className="mb-4 text-primary">{step.icon}</div>
+          <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+          <p className="text-sm text-muted-foreground/80">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Delivery Options */}
+    <div className="mt-16 text-center max-w-2xl mx-auto">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-muted-foreground">
+        Delivery Options
+      </h2>
+      <p className="mb-6 text-muted-foreground/80">
+        Choose the delivery option that fits your needs: standard delivery (2-5 days), express delivery (1-2 days), or same-day delivery (where available).
+      </p>
+      <p className="text-muted-foreground/80">
+        Each parcel is assigned a unique Tracking ID so you can monitor it from pickup to delivery. Our customer support team is always available to assist with any queries.
+      </p>
+    </div>
+  </div>
+);
+
 }

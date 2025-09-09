@@ -78,153 +78,159 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
     }
   };
 
-  return (
-    <div
-      className={cn("bg-white shadow-lg rounded-2xl p-8 space-y-6", className)}
-      {...props}
-    >
-      {/* Header */}
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold text-gray-800">Register your account</h1>
-        <p className="text-sm text-gray-500">
-          Enter your details to create an account
-        </p>
-      </div>
-
-      {/* Form */}
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          {/* Name */}
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="John Doe"
-                    {...field}
-                    className="bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-red-500 rounded-md"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="john.doe@company.com"
-                    type="email"
-                    {...field}
-                    className="bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-red-500 rounded-md"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Role */}
-          <FormField
-            control={form.control}
-            name="role"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Role</FormLabel>
-                <FormControl>
-                  <Select
-                    onValueChange={(value) => field.onChange(value)}
-                    value={field.value || ""}
-                  >
-                    <SelectTrigger className="w-full bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-red-500 rounded-md">
-                      <SelectValue placeholder="Select Role" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border border-gray-200 shadow-md rounded-md">
-                      <SelectGroup>
-                        <SelectLabel>Roles</SelectLabel>
-                        <SelectItem value="SENDER">Sender</SelectItem>
-                        <SelectItem value="RECEIVER">Receiver</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Password */}
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Password
-                    {...field}
-                    className="bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-red-500 rounded-md"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Confirm Password */}
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Password
-                    {...field}
-                    className="bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-red-500 rounded-md"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Submit */}
-          <Button
-            type="submit"
-            className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
-          >
-            Submit
-          </Button>
-        </form>
-      </Form>
-
-      {/* Divider */}
-      <div className="relative text-center text-sm my-4">
-        <span className="relative z-10 bg-white px-2 text-gray-500">
-          Or continue with
-        </span>
-        <div className="absolute inset-0 top-1/2 border-t border-gray-300"></div>
-      </div>
-
-      {/* Google Button */}
-      <Button
-        type="button"
-        variant="outline"
-        className="w-full cursor-pointer border border-gray-300 hover:bg-gray-100"
-      >
-        Login with Google
-      </Button>
-
+return (
+  <div
+    className={cn("bg-card shadow-lg rounded-2xl p-8 space-y-6", className)}
+    {...props}
+  >
+    {/* Header */}
+    <div className="flex flex-col items-center gap-2 text-center">
+      <h1 className="text-2xl font-bold text-foreground">Register your account</h1>
+      <p className="text-sm text-muted-foreground">
+        Enter your details to create an account
+      </p>
     </div>
-  );
+
+    {/* Form */}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        {/* Name */}
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="John Doe"
+                  {...field}
+                  className="bg-card text-card-foreground border-border focus:ring-primary rounded-md"
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
+        />
+
+        {/* Email */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="john.doe@company.com"
+                  type="email"
+                  {...field}
+                  className="bg-card text-card-foreground border-border focus:ring-primary rounded-md"
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
+        />
+
+<FormField
+  control={form.control}
+  name="role"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel className="text-gray-900 dark:text-gray-100">Role</FormLabel>
+      <FormControl>
+        <Select
+          onValueChange={(value) => field.onChange(value)}
+          value={field.value || ""}
+        >
+          <SelectTrigger className="w-full bg-card text-card-foreground border-border focus:ring-primary rounded-md">
+            <SelectValue placeholder="Select Role" />
+          </SelectTrigger>
+
+          <SelectContent className="bg-white dark:bg-gray-900 border border-border shadow-lg rounded-md z-50">
+            <SelectGroup>
+              <SelectLabel className="text-gray-700 dark:text-gray-300">Roles</SelectLabel>
+              <SelectItem value="SENDER" className="text-gray-900 dark:text-gray-100">
+                Sender
+              </SelectItem>
+              <SelectItem value="RECEIVER" className="text-gray-900 dark:text-gray-100">
+                Receiver
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </FormControl>
+      <FormMessage className="text-red-500" />
+    </FormItem>
+  )}
+/>
+
+
+
+        {/* Password */}
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Password
+                  {...field}
+                  className="bg-card text-card-foreground border-border focus:ring-primary rounded-md"
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
+        />
+
+        {/* Confirm Password */}
+        <FormField
+          control={form.control}
+          name="confirmPassword"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Confirm Password</FormLabel>
+              <FormControl>
+                <Password
+                  {...field}
+                  className="bg-card text-card-foreground border-border focus:ring-primary rounded-md"
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
+        />
+
+        {/* Submit */}
+        <Button
+          type="submit"
+          className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
+        >
+          Submit
+        </Button>
+      </form>
+    </Form>
+
+    {/* Divider */}
+    <div className="relative text-center text-sm my-4">
+      <span className="relative z-10 bg-background text-muted-foreground px-2">
+        Or continue with
+      </span>
+     
+    </div>
+
+    {/* Google Button */}
+    <Button
+      type="button"
+      variant="outline"
+      className="w-full cursor-pointer border-border text-foreground hover:bg-primary/5"
+    >
+      Login with Google
+    </Button>
+  </div>
+);
+
 }
