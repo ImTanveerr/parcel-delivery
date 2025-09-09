@@ -1,3 +1,28 @@
+# 📦 Parcel Delivery System
+
+## 🚀 Project Overview
+The Parcel Delivery System is a web application that allows senders to create and track parcels, while receivers can manage delivered parcels by marking them as **Received** or **Returned**.  
+
+The platform provides role-based access:
+- **Sender**: Create and send parcels with delivery and pickup details.
+- **Receiver**: View delivered parcels, acknowledge receipt, or return items.
+- **Admin**: Manage users and oversee parcel operations.  
+
+The system ensures **real-time parcel status tracking**, smooth user experience, and scalable APIs to support parcel management workflows.
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+- **Next.js 14 (App Router)** – for server-side rendering and modern React features.
+- **React 18** – component-based UI development.
+- **TypeScript** – strong typing for safer code.
+- **Tailwind CSS** – utility-first CSS framework for responsive, modern design.
+- **ShadCN/UI** – prebuilt, accessible UI components.
+- **Redux Toolkit Query (RTK Query)** – for efficient data fetching and caching.
+- **Sonner** – elegant toast notifications.
+
 
 ### 1️⃣ Public Landing Section
 - **Home Page** – Landing page introducing the parcel delivery service  
